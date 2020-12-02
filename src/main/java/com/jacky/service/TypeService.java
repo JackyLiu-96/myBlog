@@ -4,6 +4,8 @@ import com.jacky.po.Type;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 /**
  * @author Jacky
  */
@@ -36,6 +38,8 @@ public interface TypeService {
      * @return
      */
     Page<Type> listType(Pageable pageable);
+
+    List<Type> listType();
 
     /**
      * 修改分类

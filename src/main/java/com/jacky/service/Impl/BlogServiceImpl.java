@@ -1,0 +1,112 @@
+package com.jacky.service.Impl;
+
+import com.jacky.NotFoundException;
+import com.jacky.dao.BlogRepository;
+import com.jacky.po.Blog;
+import com.jacky.po.Type;
+import com.jacky.service.BlogService;
+import com.jacky.vo.BlogQuery;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @author LiuJiang
+ * @date 2020/12/2 15:14
+ */
+@Service
+public class BlogServiceImpl implements BlogService {
+
+    @Autowired
+    private BlogRepository blogRepository;
+
+    /**
+     * 根据id获取博客
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Blog getBlog(Long id) {
+        return blogRepository.findById(id).orElse(null);
+    }
+
+    /**
+     * 分页查询博客
+     *
+     * @param pageable
+     * @param blog
+     * @return
+     */
+    @Override
+    public Page<Blog> listBlog(Pageable pageable, BlogQuery blog) {
+        return blogRepository.findAll(new Specification<Blog>() {
+            @Override
+            public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
+                List<Predicate> predicates = new ArrayList<>();
+                //博客标题--搜索条件
+                if(!"".equals(blog.getTitle()) && blog.getTitle() != null){
+                    predicates.add(cb.like(root.<String>get("title"), "%"+blog.getTitle()+"%"));
+                }
+                //类型--搜索条件
+                if(blog.getTypeId() != null){
+                    predicates.add(cb.equal(root.<Type>get("type").get("id"), blog.getTypeId()));
+                }
+                //是否推荐--搜索条件
+                if(blog.getRecommend()){
+                    predicates.add(cb.equal(root.<Boolean>get("recommend"), blog.getRecommend()));
+                }
+                cq.where(predicates.toArray(new Predicate[predicates.size()]));
+                return null;
+            }
+        },pageable);
+    }
+
+    /**
+     * 新增保存博客
+     *
+     * @param blog
+     * @return
+     */
+    @Override
+    public Blog saveBlog(Blog blog) {
+        return blogRepository.save(blog);
+    }
+
+    /**
+     * 更新博客
+     *
+     * @param id
+     * @param blog
+     * @return
+     */
+    @Override
+    public Blog updateBlog(Long id, Blog blog) {
+        Blog b = blogRepository.findById(id).orElse(null);
+        if(b == null){
+            throw new NotFoundException("该博客不存在");
+        }
+        BeanUtils.copyProperties(blog,b);
+        return blogRepository.save(blog);
+    }
+
+    /**
+     * 删除博客
+     *
+     * @param id
+     */
+    @Override
+    public void deleteBlog(Long id) {
+        blogRepository.deleteById(id);
+    }
+}
