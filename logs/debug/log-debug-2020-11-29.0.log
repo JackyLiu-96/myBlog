@@ -1,0 +1,55 @@
+2020-11-29 00:03:53.798 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 01:22:30.901 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 01:28:43.595 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 01:30:34.869 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 11:17:30.739 [HikariPool-1 housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2020-11-29 11:17:32.940 [File Watcher] DEBUG o.springframework.boot.devtools.restart.Restarter - Restarting application
+2020-11-29 11:17:33.582 [Thread-17] DEBUG o.springframework.boot.devtools.restart.Restarter - Stopping application
+2020-11-29 11:17:33.583 [Thread-17] DEBUG o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@24fa1459, started on Sun Nov 29 01:30:35 CST 2020
+2020-11-29 11:17:33.583 [Thread-17] DEBUG o.s.core.env.PropertySourcesPropertyResolver - Found key 'spring.liveBeansView.mbeanDomain' in PropertySource 'systemProperties' with value of type String
+2020-11-29 11:17:33.590 [Thread-17] DEBUG org.hibernate.internal.SessionFactoryImpl - HHH000031: Closing
+2020-11-29 11:17:33.591 [Thread-17] DEBUG org.hibernate.type.spi.TypeConfiguration$Scope - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@77fd161d] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@32ff8686]
+2020-11-29 11:17:33.636 [Thread-17] DEBUG o.h.service.internal.AbstractServiceRegistryImpl - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
+2020-11-29 11:17:33.637 [Thread-17] DEBUG o.h.b.r.internal.BootstrapServiceRegistryImpl - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
+2020-11-29 11:17:33.638 [Thread-17] DEBUG o.s.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+2020-11-29 11:17:33.638 [Thread-17] DEBUG o.s.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans
+2020-11-29 11:17:33.660 [Thread-17] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Before shutdown stats (total=10, active=0, idle=10, waiting=0)
+2020-11-29 11:17:33.660 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection com.mysql.jdbc.JDBC4Connection@74ac14b2: (connection evicted)
+2020-11-29 11:17:33.662 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection com.mysql.jdbc.JDBC4Connection@7a6be457: (connection evicted)
+2020-11-29 11:17:33.664 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection com.mysql.jdbc.JDBC4Connection@7e547fc2: (connection evicted)
+2020-11-29 11:17:33.665 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection com.mysql.jdbc.JDBC4Connection@3b56ee6c: (connection evicted)
+2020-11-29 11:17:33.666 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection com.mysql.jdbc.JDBC4Connection@2f4b7430: (connection evicted)
+2020-11-29 11:17:33.670 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection com.mysql.jdbc.JDBC4Connection@aa774d2: (connection evicted)
+2020-11-29 11:17:33.672 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection com.mysql.jdbc.JDBC4Connection@5750b02b: (connection evicted)
+2020-11-29 11:17:33.674 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection com.mysql.jdbc.JDBC4Connection@5b791123: (connection evicted)
+2020-11-29 11:17:33.676 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection com.mysql.jdbc.JDBC4Connection@2f670488: (connection evicted)
+2020-11-29 11:17:33.678 [HikariPool-1 connection closer] DEBUG com.zaxxer.hikari.pool.PoolBase - HikariPool-1 - Closing connection com.mysql.jdbc.JDBC4Connection@1e57f452: (connection evicted)
+2020-11-29 11:17:33.681 [Thread-17] DEBUG com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - After shutdown stats (total=0, active=0, idle=0, waiting=0)
+2020-11-29 11:17:34.593 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 11:17:44.703 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 11:18:29.549 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 11:40:08.346 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 11:43:08.279 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 11:53:03.292 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 12:04:27.648 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 16:08:15.735 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 16:10:31.547 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 16:10:38.396 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 16:42:10.952 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 16:42:18.003 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 16:47:59.896 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 16:48:07.934 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 17:10:19.019 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 17:11:33.392 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 17:11:41.052 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 17:22:50.485 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 17:22:56.928 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 17:24:56.293 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 17:54:18.740 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 17:55:15.091 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 17:59:03.575 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 17:59:09.374 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 17:59:36.504 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 18:01:21.631 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 18:45:40.503 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
+2020-11-29 18:48:12.015 [restartedMain] DEBUG com.jacky.BlogApplication - Running with Spring Boot v2.1.9.RELEASE, Spring v5.1.10.RELEASE
