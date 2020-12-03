@@ -14,5 +14,5 @@ import lombok.NoArgsConstructor;
 public class BlogQuery {
     private String title;
     private Long typeId;
-    private Boolean recommend;
+    private boolean recommend;
 }

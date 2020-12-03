@@ -11,6 +11,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -33,12 +34,18 @@ public class BlogController {
         return "admin/blogs";
     }
 
-    @GetMapping("/blogs/search")
+    @PostMapping("/blogs/search")
     public String search(@PageableDefault(size = 3, sort = {"updateTime"}, direction = Sort.Direction.DESC) Pageable pageable,
                          BlogQuery blog, Model model) {
         model.addAttribute("page",blogService.listBlog(pageable, blog));
 
         //blogs.html 下的blogList片段，实现局部渲染
         return "admin/blogs :: blogList";
+    }
+
+    @GetMapping("/blogs/input")
+    public String input(Model model){
+        model.addAttribute("blog",new Blog());
+        return "admin/blogs-input";
     }
 }
