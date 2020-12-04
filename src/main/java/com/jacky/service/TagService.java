@@ -4,6 +4,8 @@ import com.jacky.po.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 /**
  * @author Jacky
  */
@@ -36,6 +38,19 @@ public interface TagService {
      * @return
      */
     Page<Tag> listTag(Pageable pageable);
+
+    /**
+     * 获取所有的标签
+     * @return
+     */
+    List<Tag> listTag();
+
+    /**
+     * 查询一组标签
+     * @param ids
+     * @return
+     */
+    List<Tag> listTag(String ids);
 
     /**
      * 修改标签

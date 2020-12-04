@@ -47,7 +47,7 @@
 </div>
 
 <!--中间内容-->
-<div class="m-container-small m-padded-tb-big">
+<div class="m-container m-padded-tb-big">
     <div class="ui container">
         <form id="blog-form" action="#" th:action="@{/admin/blogs}" method="post" class="ui form">
             <input type="hidden" name="published" >
@@ -82,8 +82,7 @@
                             <i class="dropdown icon"></i>
                             <div class="default text">分类</div>
                             <div class="menu">
-                                <div class="item" data-value="1">错误日志</div>
-                                <div class="item" data-value="2">开发者手册</div>
+                                <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}" th:text="${type.name}">错误日志</div>
                             </div>
                         </div>
                     </div>
@@ -96,8 +95,7 @@
                             <i class="dropdown icon"></i>
                             <div class="default text">标签</div>
                             <div class="menu">
-                                <div class="item" data-value="1">Java</div>
-                                <div class="item" data-value="2">Python</div>
+                                <div th:each="tag : ${tags}" class="item" data-value="1" th:data-value="${tag.id}" th:text="${tag.name}">Java</div>
                             </div>
                         </div>
                     </div>
@@ -203,7 +201,8 @@
             width   : "100%",
             height  : 640,
             syncScrolling : "single",
-            path    : "../static/lib/editormd/lib/"
+            // path    : "../static/lib/editormd/lib/"
+            path    : "/lib/editormd/lib/"
         });
     });
     $('.menu.toggle').click(function () {

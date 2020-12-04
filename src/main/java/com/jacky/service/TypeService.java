@@ -39,6 +39,10 @@ public interface TypeService {
      */
     Page<Type> listType(Pageable pageable);
 
+    /**
+     * 获取所有的分类
+     * @return
+     */
     List<Type> listType();
 
     /**
