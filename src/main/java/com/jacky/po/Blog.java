@@ -62,6 +62,10 @@ public class Blog {
      */
     private boolean recommend;
     /**
+     * 描述
+     */
+    private String description;
+    /**
      * 创建时间
      */
     @Temporal(TemporalType.TIMESTAMP)
