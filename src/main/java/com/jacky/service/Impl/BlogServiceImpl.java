@@ -57,21 +57,21 @@ public class BlogServiceImpl implements BlogService {
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> cq, CriteriaBuilder cb) {
                 List<Predicate> predicates = new ArrayList<>();
                 //博客标题--搜索条件
-                if(!"".equals(blog.getTitle()) && blog.getTitle() != null){
-                    predicates.add(cb.like(root.<String>get("title"), "%"+blog.getTitle()+"%"));
+                if (!"".equals(blog.getTitle()) && blog.getTitle() != null) {
+                    predicates.add(cb.like(root.<String>get("title"), "%" + blog.getTitle() + "%"));
                 }
                 //类型--搜索条件
-                if(blog.getTypeId() != null){
+                if (blog.getTypeId() != null) {
                     predicates.add(cb.equal(root.<Type>get("type").get("id"), blog.getTypeId()));
                 }
                 //是否推荐--搜索条件
-                if(blog.isRecommend()){
+                if (blog.isRecommend()) {
                     predicates.add(cb.equal(root.<Boolean>get("recommend"), blog.isRecommend()));
                 }
                 cq.where(predicates.toArray(new Predicate[predicates.size()]));
                 return null;
             }
-        },pageable);
+        }, pageable);
     }
 
     /**
@@ -83,9 +83,15 @@ public class BlogServiceImpl implements BlogService {
     @Transactional
     @Override
     public Blog saveBlog(Blog blog) {
-        blog.setCreateTime(new Date());
-        blog.setUpdateTime(new Date());
-        blog.setViews(0);
+        //新增
+        if (blog.getId() == null) {
+            blog.setCreateTime(new Date());
+            blog.setUpdateTime(new Date());
+            blog.setViews(0);
+        } else {
+            //修改
+            blog.setUpdateTime(new Date());
+        }
         return blogRepository.save(blog);
     }
 
@@ -100,10 +106,10 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog updateBlog(Long id, Blog blog) {
         Blog b = blogRepository.findById(id).orElse(null);
-        if(b == null){
+        if (b == null) {
             throw new NotFoundException("该博客不存在");
         }
-        BeanUtils.copyProperties(blog,b);
+        BeanUtils.copyProperties(blog, b);
         return blogRepository.save(blog);
     }
 

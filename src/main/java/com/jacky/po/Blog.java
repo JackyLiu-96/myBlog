@@ -78,6 +78,34 @@ public class Blog {
     @Transient
     private String tagIds;
 
+    public void init() {
+        this.tagIds = tagsToIds(this.getTags());
+    }
+
+    /**
+     * 集合转1,2,3这种形式
+     *
+     * @param tags
+     * @return
+     */
+    private String tagsToIds(List<Tag> tags) {
+        if (tags != null) {
+            StringBuffer ids = new StringBuffer();
+            boolean flag = false;
+            for (Tag tag : tags) {
+                if (flag) {
+                    ids.append(",");
+                } else {
+                    flag = true;
+                }
+                ids.append(tag.getId());
+            }
+            return ids.toString();
+        } else {
+            return tagIds;
+        }
+    }
+
     @ManyToMany(cascade = {CascadeType.PERSIST})
     private List<Tag> tags = new ArrayList<>();
     @ManyToOne

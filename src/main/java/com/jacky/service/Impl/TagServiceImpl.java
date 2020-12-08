@@ -70,10 +70,19 @@ public class TagServiceImpl implements TagService {
 
     private List<Long> convertToList(String ids){
         List<Long> list = new ArrayList<>();
-        if("".equals(ids) && ids != null){
+        if(!"".equals(ids) && ids != null){
             String[] idArray = ids.split(",");
+            //判断是否存在新增的tag,如果有肯定会报异常，则再异常中处理
             for(int i = 0;i < idArray.length;i++){
-                list.add(new Long(idArray[i]));
+                try {
+                    list.add(new Long(idArray[i]));
+                } catch (NumberFormatException e) {
+                   Tag tag = new Tag();
+                   tag.setName(idArray[i]);
+                    tagRepository.save(tag);
+                    list.add(new Long(tag.getId()));
+                }
+
             }
         }
         return list;
