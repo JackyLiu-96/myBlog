@@ -5,6 +5,8 @@ import com.jacky.vo.BlogQuery;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 
 /**
  * @author LiuJiang
@@ -25,6 +27,20 @@ public interface BlogService {
      * @return
      */
     Page<Blog> listBlog(Pageable pageable, BlogQuery blog);
+
+    /**
+     * 分页查询博客
+     * @param pageable
+     * @return
+     */
+    Page<Blog> listBlog(Pageable pageable);
+
+    /**
+     * 推荐的博客列表
+     * @param size
+     * @return
+     */
+    List<Blog> listRecommendBlogTop(Integer size);
 
     /**
      * 新增保存博客

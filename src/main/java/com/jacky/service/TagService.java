@@ -46,6 +46,13 @@ public interface TagService {
     List<Tag> listTag();
 
     /**
+     * 根据size获取标签列表
+     * @param size
+     * @return
+     */
+    List<Tag> listTagTop(Integer size);
+
+    /**
      * 查询一组标签
      * @param ids
      * @return
