@@ -15,6 +15,7 @@ import java.util.List;
 public interface BlogService {
     /**
      * 根据id获取博客
+     *
      * @param id
      * @return
      */
@@ -22,6 +23,7 @@ public interface BlogService {
 
     /**
      * 分页查询博客
+     *
      * @param pageable
      * @param blog
      * @return
@@ -30,13 +32,23 @@ public interface BlogService {
 
     /**
      * 分页查询博客
+     *
      * @param pageable
      * @return
      */
     Page<Blog> listBlog(Pageable pageable);
 
     /**
+     * 查询博客
+     * @param query
+     * @param pageable
+     * @return
+     */
+    Page<Blog> listBlog(String query, Pageable pageable);
+
+    /**
      * 推荐的博客列表
+     *
      * @param size
      * @return
      */
@@ -44,6 +56,7 @@ public interface BlogService {
 
     /**
      * 新增保存博客
+     *
      * @param blog
      * @return
      */
@@ -51,6 +64,7 @@ public interface BlogService {
 
     /**
      * 更新博客
+     *
      * @param id
      * @param blog
      * @return
@@ -59,6 +73,7 @@ public interface BlogService {
 
     /**
      * 删除博客
+     *
      * @param id
      */
     void deleteBlog(Long id);

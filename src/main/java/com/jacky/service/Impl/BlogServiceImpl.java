@@ -89,6 +89,18 @@ public class BlogServiceImpl implements BlogService {
     }
 
     /**
+     * 查询博客
+     *
+     * @param query
+     * @param pageable
+     * @return
+     */
+    @Override
+    public Page<Blog> listBlog(String query, Pageable pageable) {
+        return null;
+    }
+
+    /**
      * 推荐的博客列表
      *
      * @param size
