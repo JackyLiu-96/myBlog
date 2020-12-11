@@ -5,6 +5,7 @@ import com.jacky.dao.BlogRepository;
 import com.jacky.po.Blog;
 import com.jacky.po.Type;
 import com.jacky.service.BlogService;
+import com.jacky.util.MarkdownUtils;
 import com.jacky.util.MyBeanUtils;
 import com.jacky.vo.BlogQuery;
 import org.springframework.beans.BeanUtils;
@@ -44,6 +45,25 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog getBlog(Long id) {
         return blogRepository.findById(id).orElse(null);
+    }
+
+    /**
+     * 获取并转换
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public Blog getAndConvert(Long id) {
+        Blog blog = blogRepository.findById(id).orElse(null);
+        if(blog == null){
+            throw new NotFoundException("该博客不存在");
+        }
+        Blog b = new Blog();
+        BeanUtils.copyProperties(blog,b);
+        String content = b.getContent();
+        b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
+        return b;
     }
 
     /**
@@ -97,7 +117,7 @@ public class BlogServiceImpl implements BlogService {
      */
     @Override
     public Page<Blog> listBlog(String query, Pageable pageable) {
-        return null;
+        return blogRepository.findByQuery(query,pageable);
     }
 
     /**
