@@ -465,23 +465,24 @@ h5,h6{font-size:1em;}
                 <div th:fragment="commentList">
                     <div class="ui threaded comments" style="max-width: 100%">
                         <h3 class="ui dividing header">评论</h3>
-                        <div class="comment">
+                        <div class="comment" th:each="comment : ${comments}">
                             <a class="avatar">
-                                <img src="https://unsplash.it/100/100?image=1003">
+                                <img src="https://unsplash.it/100/100?image=1003" th:src="@{${comment.avatar}}">
                             </a>
                             <div class="content">
-                                <a class="author">Matt</a>
+                                <a class="author" th:text="${comment.nickname}">Matt</a>
                                 <div class="metadata">
-                                    <span class="date">Today at 5:42PM</span>
+                                    <span class="date" th:text="${#dates.format(comment.createTime,'yyyy-MM-dd HH:mm')}">Today at 5:42PM</span>
                                 </div>
-                                <div class="text">
+                                <div class="text" th:text="${comment.content}">
                                     How artistic!
                                 </div>
                                 <div class="actions">
-                                    <a class="reply">回复</a>
+                                    <a class="reply" data-commentid="1" data-commentnickname="Matt" th:attr="data-commentid=${comment.id},data-commentnickname=${comment.nickname}" onclick="reply(this)">回复</a>
                                 </div>
                             </div>
                         </div>
+                        <!--/*-->
                         <div class="comment">
                             <a class="avatar">
                                 <img src="https://unsplash.it/100/100?image=1006">
@@ -535,11 +536,12 @@ h5,h6{font-size:1em;}
                                 </div>
                             </div>
                         </div>
+                        <!--*/-->
                     </div>
                 </div>
 
             </div>
-            <div class="ui form">
+            <div id="comment-form" class="ui form">
                 <input type="hidden" name="blog.id" th:value="${blog.id}">
                 <input type="hidden" name="parentComment.id" value="-1">
                 <div class="field">
@@ -666,7 +668,7 @@ h5,h6{font-size:1em;}
         position : 'left center'
     });
     var serurl = "127.0.0.1:8080";
-    var url = /*[[@{/blog/{id}(id=${blog.id}})}]]*/"";
+    var url = /*[[@{/blog/{id}(id=${blog.id})}]]*/"";
     var qrcode = new QRCode("qrcode", {
         text: serurl+url,
         width: 110,
@@ -722,6 +724,7 @@ h5,h6{font-size:1em;}
         var boo = $('.ui.form').form('validate form');
         if(boo){
             console.info('校验成功');
+            postData();
         } else {
             console.info('校验失败');
         }
@@ -733,10 +736,25 @@ h5,h6{font-size:1em;}
             "blog.id" : $("[name='blog.id']").val(),
             "nickname" : $("[name='nickname']").val(),
             "email" : $("[name='email']").val(),
-            "content" : $("[name='content']").val(),
+            "content" : $("[name='content']").val()
         },function (responseTxt,statusTxt,xhr) {
-
+            $(window).scrollTo($('#comment-container'),500);
+            clearContent();
         });
+    }
+
+    function clearContent() {
+        $("[name='content']").val('');
+        $("[name='parentComment.id']").val(-1);
+        $("[name='content']").attr("placeholder","请输入评论信息...");
+    }
+
+    function reply(obj) {
+        var commentId = $(obj).data('commentid');
+        var commentNickname = $(obj).data('commentnickname');
+        $("[name='content']").attr("placeholder","@"+commentNickname).focus();
+        $("[name='parentComment.id']").val(commentId);
+        $(window).scrollTo($('#comment-form'),500);
     }
 </script>
 </body>
