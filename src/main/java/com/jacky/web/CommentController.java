@@ -1,6 +1,7 @@
 package com.jacky.web;
 
 import com.jacky.po.Comment;
+import com.jacky.po.User;
 import com.jacky.service.BlogService;
 import com.jacky.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author Jacky
@@ -26,16 +29,23 @@ public class CommentController {
 
     @GetMapping("/comments/{blogId}")
     public String comments(@PathVariable Long blogId, Model model) {
-        model.addAttribute("comments",commentService.listCommentByBlogId(blogId));
+        model.addAttribute("comments", commentService.listCommentByBlogId(blogId));
         return "blog :: commentList";
     }
 
     @PostMapping("/comments")
-    public String post(Comment comment){
+    public String post(Comment comment, HttpSession session) {
         Long blogId = comment.getBlog().getId();
         comment.setBlog(blogService.getBlog(blogId));
-        comment.setAvatar(avatar);
+        User user = (User) session.getAttribute("user");
+        if(user != null){
+            comment.setAvatar(user.getAvatar());
+            comment.setAdminComment(true);
+            comment.setNickname(user.getNickname());
+        } else {
+            comment.setAvatar(avatar);
+        }
         commentService.saveComment(comment);
-        return "redirect:/comments/"+ comment.getBlog().getId();
+        return "redirect:/comments/" + comment.getBlog().getId();
     }
 }
