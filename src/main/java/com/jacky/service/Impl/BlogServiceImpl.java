@@ -19,9 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.criteria.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author LiuJiang
@@ -54,11 +52,11 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public Blog getAndConvert(Long id) {
         Blog blog = blogRepository.findById(id).orElse(null);
-        if(blog == null){
+        if (blog == null) {
             throw new NotFoundException("该博客不存在");
         }
         Blog b = new Blog();
-        BeanUtils.copyProperties(blog,b);
+        BeanUtils.copyProperties(blog, b);
         String content = b.getContent();
         b.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
         blogRepository.updateViews(id);
@@ -119,10 +117,10 @@ public class BlogServiceImpl implements BlogService {
         return blogRepository.findAll(new Specification<Blog>() {
             @Override
             public Predicate toPredicate(Root<Blog> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder cb) {
-                Join join =root.join("tags");
-                return cb.equal(join.get("id"),tagId);
+                Join join = root.join("tags");
+                return cb.equal(join.get("id"), tagId);
             }
-        },pageable);
+        }, pageable);
     }
 
     /**
@@ -134,7 +132,7 @@ public class BlogServiceImpl implements BlogService {
      */
     @Override
     public Page<Blog> listBlog(String query, Pageable pageable) {
-        return blogRepository.findByQuery(query,pageable);
+        return blogRepository.findByQuery(query, pageable);
     }
 
     /**
@@ -145,9 +143,25 @@ public class BlogServiceImpl implements BlogService {
      */
     @Override
     public List<Blog> listRecommendBlogTop(Integer size) {
-        Sort sort = Sort.by(Sort.Direction.DESC,"updateTime");
-        Pageable pageable = PageRequest.of(0,size,sort);
+        Sort sort = Sort.by(Sort.Direction.DESC, "updateTime");
+        Pageable pageable = PageRequest.of(0, size, sort);
         return blogRepository.findTop(pageable);
+    }
+
+    @Override
+    public Map<String, List<Blog>> archiveBlog() {
+        List<String> years = blogRepository.findGroupYear();
+        //用HashMap是无序的，年份排列没有和预期一样
+        Map<String,List<Blog>> map = new LinkedHashMap<>();
+        for (String year : years) {
+            map.put(year,blogRepository.findByYear(year));
+        }
+        return map;
+    }
+
+    @Override
+    public Long countBlog() {
+        return blogRepository.count();
     }
 
     /**
