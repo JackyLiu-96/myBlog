@@ -23,6 +23,7 @@ public interface BlogService {
 
     /**
      * 获取并转换
+     *
      * @param id
      * @return
      */
@@ -46,7 +47,16 @@ public interface BlogService {
     Page<Blog> listBlog(Pageable pageable);
 
     /**
+     * 分页查询博客
+     * @param tagId
+     * @param pageable
+     * @return
+     */
+    Page<Blog> listBlog(Long tagId, Pageable pageable);
+
+    /**
      * 查询博客
+     *
      * @param query
      * @param pageable
      * @return
